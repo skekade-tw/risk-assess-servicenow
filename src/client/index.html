@@ -1,0 +1,30 @@
+<html>
+<head>
+  <title>Risk Assessment — Trustwise</title>
+
+  <!-- Initialize globals and include ServiceNow's required scripts -->
+  <sdk:now-ux-globals></sdk:now-ux-globals>
+
+  <!--
+    Runtime environment for the Risk Assessment bundle. Read at module-eval time
+    by tw-portal's src/configs/config.ts and oidc-config.ts, so this MUST run
+    before the bundle's module script below. Edit per environment — all values
+    are public (no secrets); the user authenticates via the OAuth popup.
+  -->
+  <script>
+    window._env_ = {
+      VITE_API_URL: "https://api.tw-dev.trustwise.ai",
+      VITE_OIDC_AUTHORITY: "https://authkey.tw-dev.trustwise.ai/realms/trustwise",
+      VITE_OIDC_CLIENT_ID: "frontend",
+      VITE_OIDC_SCOPE: "openid profile email",
+      VITE_POPUP_REDIRECT_URI: "https://dev350360.service-now.com/x_2058331_risk_popup_callback.do"
+    };
+  </script>
+
+  <!-- React entry point (bundled by the SDK, served as a .jsdbx lib asset) -->
+  <script src="./main.tsx" type="module"></script>
+</head>
+<body>
+  <div id="root"></div>
+</body>
+</html>

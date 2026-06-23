@@ -1,0 +1,6 @@
+{
+  "scope": "x_2058331_risk",
+  "scopeId": "e18a7fcb66f7489f8999b242b2184a25",
+  "name": "Risk Assessment",
+  "tsconfigPath": "./src/server/tsconfig.json"
+}
