@@ -51,7 +51,10 @@ export default async ({ rootDir, config, fs, path, logger, registerExplicitId })
                 //         '**/*.bundle.js',
                 //     ],
                 //   },
-                editableSourceCodeOnInstance: true,
+                // The client is a prebuilt bundle from tw-portal (risk-assessment.js
+                // is ~4MB), so on-instance source editing isn't useful and trips the
+                // max-file-size limit. Disable it.
+                editableSourceCodeOnInstance: false,
             }),
         ],
     })
