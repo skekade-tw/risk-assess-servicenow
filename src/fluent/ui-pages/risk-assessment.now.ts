@@ -4,7 +4,7 @@ import riskAssessmentPage from '../../client/index.html'
 
 UiPage({
     $id: Now.ID['risk-assessment-page'],
-    endpoint: 'x_2058331_risk_risk_assessment.do',
+    endpoint: 'x_trwi_trustwise_0_risk_assessment.do',
     description: 'Trustwise Risk Assessment',
     category: 'general',
     html: riskAssessmentPage,
