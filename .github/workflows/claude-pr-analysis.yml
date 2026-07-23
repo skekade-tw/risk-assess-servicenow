@@ -32,7 +32,6 @@ jobs:
         with:
           claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           prompt: "/ticket-gap-analysis"
-          show_full_output: true
           claude_args: >-
             --max-turns 40
             --model claude-sonnet-5
