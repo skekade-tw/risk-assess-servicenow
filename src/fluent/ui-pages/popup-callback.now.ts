@@ -7,7 +7,7 @@ import popupCallbackPage from '../../client/popup.html'
 // VITE_POPUP_REDIRECT_URI in the UI Page env scripts.
 UiPage({
     $id: Now.ID['risk-assessment-popup-callback'],
-    endpoint: 'x_2058331_risk_popup_callback.do',
+    endpoint: 'x_trwi_trustwise_0_popup_callback.do',
     description: 'Trustwise Risk Assessment — OAuth popup callback',
     category: 'general',
     html: popupCallbackPage,
