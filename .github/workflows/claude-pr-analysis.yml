@@ -11,6 +11,7 @@ on:
 permissions:
   contents: read
   pull-requests: write
+  id-token: write         # required: action fetches an OIDC token to authenticate
 
 # Cancel superseded runs when the PR is updated repeatedly.
 concurrency:
