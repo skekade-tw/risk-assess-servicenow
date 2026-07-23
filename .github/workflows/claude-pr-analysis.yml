@@ -31,8 +31,6 @@ jobs:
         uses: anthropics/claude-code-action@v1
         with:
           anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
-          # Temporary: surface the real API error (is_error:true with $0 cost = auth/model reject).
-          show_full_output: true
           # Repo skill lives in .claude/skills/verify/ (checked out above).
           prompt: "/verify"
           claude_args: >-
