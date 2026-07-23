@@ -34,7 +34,7 @@ jobs:
           # Repo skill lives in .claude/skills/verify/ (checked out above).
           prompt: "/verify"
           claude_args: >-
-            --max-turns 15
+            --max-turns 40
             --model claude-sonnet-5
         env:
           # Available to the skill's `gh` calls (posting/reading the PR).
