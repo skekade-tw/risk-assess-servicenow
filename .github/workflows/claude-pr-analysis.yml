@@ -30,12 +30,11 @@ jobs:
       - name: Run gap-analysis skill
         uses: anthropics/claude-code-action@v1
         with:
-          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
-          # Repo skill lives in .claude/skills/verify/ (checked out above).
-          prompt: "/verify"
+          claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          prompt: "/ticket-gap-analysis"
           claude_args: >-
             --max-turns 40
-            --model claude-sonnet-5
+            --model claude-sonnet-5-20260203
             --allowedTools "Bash(gh:*),Bash(git:*),Read,Write,Grep,Glob"
         env:
           # Available to the skill's `gh` calls (posting/reading the PR).
