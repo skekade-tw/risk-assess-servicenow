@@ -1,0 +1,43 @@
+name: Claude PR Analysis
+
+# Fires automatically when a PR targets `main`.
+# No @claude mention needed — this runs in "automation mode" because a `prompt` is set.
+on:
+  pull_request:
+    branches: [main]
+    types: [opened, edited, synchronize, reopened]
+
+# Least privilege: read the code, write the PR comment.
+permissions:
+  contents: read
+  pull-requests: write
+  id-token: write         # required: action fetches an OIDC token to authenticate
+
+# Cancel superseded runs when the PR is updated repeatedly.
+concurrency:
+  group: claude-pr-analysis-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  analyze:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0        # full history so Claude can diff branch vs. base
+
+      - name: Run gap-analysis skill
+        uses: anthropics/claude-code-action@v1
+        with:
+          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          # Repo skill lives in .claude/skills/verify/ (checked out above).
+          prompt: "/verify"
+          claude_args: >-
+            --max-turns 15
+            --model claude-sonnet-5
+        env:
+          # Available to the skill's `gh` calls (posting/reading the PR).
+          GH_TOKEN: ${{ github.token }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          BASE_REF: ${{ github.event.pull_request.base.ref }}
