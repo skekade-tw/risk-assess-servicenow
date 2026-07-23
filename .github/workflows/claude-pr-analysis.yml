@@ -35,7 +35,7 @@ jobs:
           show_full_output: true
           claude_args: >-
             --max-turns 40
-            --model claude-sonnet-5-20260203
+            --model claude-sonnet-5
             --allowedTools "Bash(gh:*),Bash(git:*),Read,Write,Grep,Glob"
         env:
           # Available to the skill's `gh` calls (posting/reading the PR).
